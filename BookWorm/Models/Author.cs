@@ -9,10 +9,6 @@ namespace BookWorm.Models
 
         [MaxLength(50)]
         public string Name { get; set; }
-
-
-        //todo: add a migration to add this column, create an index on it
-        //todo: use computed column to set it to upper case
         public string NormalizedName { get; set; }
 
         [MaxLength(1000)]
@@ -21,6 +17,5 @@ namespace BookWorm.Models
         [ForeignKey("ImageId")]
         public ApplicationImage? Photo { get; set; }
         public ICollection<Book> WrittenBooks { get; set; }
-        //public ICollection<ApplicationUser> FavoritedByUsers { get; set; }
     }
 }

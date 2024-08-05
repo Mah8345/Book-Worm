@@ -32,10 +32,5 @@ namespace BookWorm.Models
 
         //self referencing relationships
         public ICollection<Book> SimilarBooks { get; set; }
-
-        //user related properties
-        //public ICollection<ApplicationUser> FavoritedByUsers { get; set; }
-        //public ICollection<ApplicationUser> WantToReadUsers { get; set; }
-        //public ICollection<ApplicationUser> ReadByUsers { get; set; }
     }
 }
