@@ -10,6 +10,11 @@ namespace BookWorm.Models
         [MaxLength(50)]
         public string Name { get; set; }
 
+
+        //todo: add a migration to add this column, create an index on it
+        //todo: use computed column to set it to upper case
+        public string NormalizedName { get; set; }
+
         [MaxLength(1000)]
         public string? About { get; set; }
 

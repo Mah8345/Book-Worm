@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookWorm.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : IdentityDbContext<ApplicationUser>(options)
     {
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<ApplicationImage> ApplicationImages { get; set; }
@@ -15,9 +16,6 @@ namespace BookWorm.Data
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {
-        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,7 +28,7 @@ namespace BookWorm.Data
             base.OnModelCreating(builder);
             ConfigureApplicationUser(builder);
             ConfigureBook(builder);
-            
+            ConfigureAuthor(builder);
         }
 
         private void ConfigureApplicationUser(ModelBuilder builder)
@@ -133,6 +131,16 @@ namespace BookWorm.Data
                         r => r.HasOne<Book>().WithMany().HasForeignKey("SimilarBookId"),
                         l=>l.HasOne<Book>().WithMany().HasForeignKey("BookId")
                     );
+        }
+
+        private void ConfigureAuthor(ModelBuilder builder)
+        {
+            builder.Entity<Author>()
+                .HasIndex(a => a.NormalizedName);
+
+            builder.Entity<Author>()
+                .Property(a => a.NormalizedName)
+                .HasComputedColumnSql("UPPER(Name)");
         }
     }
 }
