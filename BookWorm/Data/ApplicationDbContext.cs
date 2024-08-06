@@ -29,6 +29,8 @@ namespace BookWorm.Data
             ConfigureApplicationUser(builder);
             ConfigureBook(builder);
             ConfigureAuthor(builder);
+            ConfigureGenre(builder);
+            ConfigurePublisher(builder);
         }
 
         private void ConfigureApplicationUser(ModelBuilder builder)
@@ -147,6 +149,26 @@ namespace BookWorm.Data
 
             builder.Entity<Author>()
                 .Property(a => a.NormalizedName)
+                .HasComputedColumnSql("UPPER(Name)");
+        }
+
+        private void ConfigureGenre(ModelBuilder builder)
+        {
+            builder.Entity<Genre>()
+                .HasIndex(g => g.NormalizedName);
+
+            builder.Entity<Genre>()
+                .Property(g => g.NormalizedName)
+                .HasComputedColumnSql("UPPER(Name)");
+        }
+
+        private void ConfigurePublisher(ModelBuilder builder)
+        {
+            builder.Entity<Publisher>()
+                .HasIndex(p => p.NormalizedName);
+
+            builder.Entity<Publisher>()
+                .Property(p => p.NormalizedName)
                 .HasComputedColumnSql("UPPER(Name)");
         }
     }

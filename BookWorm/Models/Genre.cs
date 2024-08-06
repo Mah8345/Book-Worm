@@ -9,6 +9,7 @@ namespace BookWorm.Models
 
         [MaxLength(50)]
         public string Name { get; set; }
+        public string NormalizedName { get; set; }
 
         [MaxLength(1000)]
         public string? Description { get; set; }
