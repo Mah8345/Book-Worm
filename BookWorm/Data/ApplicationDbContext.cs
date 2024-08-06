@@ -83,6 +83,13 @@ namespace BookWorm.Data
         private void ConfigureBook(ModelBuilder builder)
         {
             builder.Entity<Book>()
+                .HasIndex(b => b.NormalizedTitle);
+
+            builder.Entity<Book>()
+                .Property(b => b.NormalizedTitle)
+                .HasComputedColumnSql("UPPER(Title)");
+
+            builder.Entity<Book>()
                 .HasMany<Author>(b => b.Authors)
                 .WithMany(a => a.WrittenBooks)
                 .UsingEntity<Dictionary<string, object>>

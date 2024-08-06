@@ -9,6 +9,7 @@ namespace BookWorm.Models
 
         [MaxLength(150)]
         public string Title { get; set; }
+        public string NormalizedTitle { get; set; }
         public string Introduction { get; set; }
 
 
