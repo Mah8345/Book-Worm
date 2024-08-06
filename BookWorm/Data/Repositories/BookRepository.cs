@@ -46,7 +46,7 @@ namespace BookWorm.Data.Repositories
             var books = await Context.Books
                 .Include(b => b.CoverPhoto)
                 .Include(b => b.Comments)
-                .Where(b => b.NormalizedTitle == key)
+                .Where(b => b.NormalizedTitle.Contains(key))
                 .ToListAsync();
             return books.IsNullOrEmpty() ? [] : books;
         }
