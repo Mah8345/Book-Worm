@@ -113,7 +113,7 @@ namespace BookWorm.Data
 
             builder.Entity<Book>()
                 .HasMany<Review>(b => b.Reviews)
-                .WithOne()
+                .WithOne(r => r.ReviewedBook)
                 .HasForeignKey("BookId");
 
             builder.Entity<Book>()
