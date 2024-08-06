@@ -60,6 +60,26 @@ namespace BookWorm.Tests.TestHelpers
             return authors;
         }
 
+        private static List<ApplicationUser> GenerateRandomUsers(int count)
+        {
+            var random = new Random();
+            var age = random.Next(12, 80);
+            var users = new List<ApplicationUser>();
+            for (int i = 0; i < count; i++)
+            {
+                users.Add(new ApplicationUser()
+                {
+                    FirstName = $"FirstName_{i}",
+                    LastName = $"LastName_{i}",
+                    AccessFailedCount = 10,
+                    Bio = $"Hey, I'm very interested in reading!_{i}",
+                    DateOfBirth = DateTime.Now.AddYears(-age),
+                    Email = $"ex_{i}@example.com"
+                });
+            }
+            return users;
+        }
+
         public static ApplicationUser AddUser(string id,ApplicationDbContext context)
         {
             var user = new ApplicationUser()
@@ -69,7 +89,6 @@ namespace BookWorm.Tests.TestHelpers
                 LastName = "LastName",
                 AccessFailedCount = 10,
                 Bio = "Hey, I'm very interested in reading!",
-                Comments = new List<Comment>(),
                 DateOfBirth = DateTime.Now,
                 Email = "example@ex.com",
                 EmailConfirmed = false,
@@ -80,6 +99,20 @@ namespace BookWorm.Tests.TestHelpers
             context.ApplicationUsers.Add(user);
             context.SaveChanges();
             return user;
+        }
+
+        public static void SeedDatabase(ApplicationDbContext context)
+        {
+            var users = GenerateRandomUsers(20);
+            context.ApplicationUsers.AddRange(users);
+            foreach (var user in users)
+            {
+                user.FavoriteBooks = GenerateRandomBooks(10);
+                user.FavoriteAuthors = GenerateRandomAuthors(10);
+                user.FavoriteGenres = GenerateRandomGenres(10);
+            }
+
+            context.SaveChanges();
         }
     }
 }

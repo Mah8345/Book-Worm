@@ -32,9 +32,9 @@ namespace BookWorm.Tests.RepositoryTests
 
         
         
-
+        //method name_state under test_expected behavior
         [Fact]
-        public async Task GetUserByIdAsync_GetUsers()
+        public async Task GetUserByIdAsync_UserExists_ReturnsUser()
         {
             //Arrange
             var id = Guid.NewGuid().ToString();
@@ -66,7 +66,19 @@ namespace BookWorm.Tests.RepositoryTests
             {
                 Assert.Contains(result.FavoriteGenres, g => g.Id == i);
             }
+        }
 
+        [Fact]
+        public async Task GetUserByIdAsync_UserDoesNotExist_ReturnsNull()
+        {
+            //Arrange
+            var id = Guid.NewGuid().ToString();
+
+            //Act
+            var result = await _userRepository.GetUserByIdAsync(id);
+
+            //Assert
+            Assert.Null(result);
         }
     }
 }
