@@ -14,6 +14,7 @@ namespace BookWorm.Data.Repositories
                     Book = b,
                     b.CoverPhoto,
                     b.Comments,
+                    CommentUsers = b.Comments.Select(c => c.CommentedBy),
                     b.Publisher,
                     PublisherLogo = b.Publisher != null ? b.Publisher.PublisherLogo : null,
                     b.Authors,
