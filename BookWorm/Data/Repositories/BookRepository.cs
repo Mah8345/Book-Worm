@@ -15,6 +15,7 @@ namespace BookWorm.Data.Repositories
                     b.CoverPhoto,
                     b.Comments,
                     CommentUsers = b.Comments.Select(c => c.CommentedBy),
+                    CommentUsersPhotos = b.Comments.Select(c => c.CommentedBy.ProfilePhoto),
                     b.Publisher,
                     PublisherLogo = b.Publisher != null ? b.Publisher.PublisherLogo : null,
                     b.Authors,
@@ -36,7 +37,8 @@ namespace BookWorm.Data.Repositories
                 CoverPhoto = result.CoverPhoto,
                 Publisher = result.Publisher,
                 Authors = result.Authors,
-                AssociatedGenres = result.AssociatedGenres
+                AssociatedGenres = result.AssociatedGenres,
+                Comments = result.Comments
             };
         }
 
