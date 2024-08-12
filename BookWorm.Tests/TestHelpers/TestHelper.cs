@@ -10,6 +10,21 @@ namespace BookWorm.Tests.TestHelpers
 {
     public static class TestHelper
     {
+        public static List<ApplicationImage> GenerateRandomImages(int count)
+        {
+            var images = new List<ApplicationImage>();
+            for (int i = 0; i < count; i++)
+            {
+                images.Add(new ApplicationImage()
+                {
+                    FileName = $"Name_{i}",
+                    FileSize = 1024 + i
+                });
+            }
+
+            return images;
+        }
+
         public static List<Book> GenerateRandomBooks(int count)
         {
             var books = new List<Book>();
@@ -28,8 +43,14 @@ namespace BookWorm.Tests.TestHelpers
             return books;
         }
 
-        public static List<Genre> GenerateRandomGenres(int count)
+
+        public static List<Genre> GenerateRandomGenres(int count, bool generateImageForGenres = false)
         {
+            List<ApplicationImage>? images = null;
+            if (generateImageForGenres)
+            {
+                images = GenerateRandomImages(count);
+            }
             var genres = new List<Genre>();
             for (int i = 0; i < count; i++)
             {
@@ -37,15 +58,22 @@ namespace BookWorm.Tests.TestHelpers
                 {
                     Name = $"Genre_{i}",
                     NormalizedName = $"GENRE_{i}",
-                    Description = $"description_{i}"
+                    Description = $"description_{i}",
+                    Photo = images?[i]
                 });
             }
 
             return genres;
         }
 
-        public static List<Author> GenerateRandomAuthors(int count)
+
+        public static List<Author> GenerateRandomAuthors(int count, bool generateImageForAuthors = false)
         {
+            List<ApplicationImage>? images = null;
+            if (generateImageForAuthors)
+            {
+                images = GenerateRandomImages(count);
+            }
             var authors = new List<Author>();
             for (int i = 0; i < count; i++)
             {
@@ -53,7 +81,8 @@ namespace BookWorm.Tests.TestHelpers
                 {
                     Name = $"Author{i}",
                     NormalizedName = $"AUTHOR{i}",
-                    About = $"about Author_{i}"
+                    About = $"about Author_{i}",
+                    Photo = images?[i]
                 });
             }
 
@@ -75,7 +104,25 @@ namespace BookWorm.Tests.TestHelpers
             return awards;
         }
 
-        private static List<ApplicationUser> GenerateRandomUsers(int count)
+        public static List<Comment> GenerateRandomComments(int count)
+        {
+            var users = GenerateRandomUsers(count);
+            var comments = new List<Comment>();
+            for (int i = 0; i < count; i++)
+            {
+                comments.Add(new Comment()
+                {
+                    CommentedAt = DateTime.Now,
+                    Rating = 5,
+                    Body = $"Comment_{i}",
+                    CommentedBy = users[i]
+                });
+            }
+
+            return comments;
+        }
+
+        public static List<ApplicationUser> GenerateRandomUsers(int count)
         {
             var random = new Random();
             var age = random.Next(12, 80);
