@@ -81,7 +81,7 @@ namespace BookWorm.Tests.RepositoryTests
             Assert.Equal(author.Photo.Id, result?.Photo?.Id);
             foreach (var book in books)
             {
-                Assert.Contains(book, result.WrittenBooks);
+                Assert.Contains(result.WrittenBooks, b => b.Id == book.Id);
             }
         }
 
