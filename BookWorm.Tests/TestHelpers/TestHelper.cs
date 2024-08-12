@@ -104,12 +104,15 @@ namespace BookWorm.Tests.TestHelpers
         public static void SeedDatabase(ApplicationDbContext context)
         {
             var users = GenerateRandomUsers(20);
+            var books = GenerateRandomBooks(10);
+            var authors = GenerateRandomAuthors(10);
+            var genres = GenerateRandomGenres(10);
             context.ApplicationUsers.AddRange(users);
             foreach (var user in users)
             {
-                user.FavoriteBooks = GenerateRandomBooks(10);
-                user.FavoriteAuthors = GenerateRandomAuthors(10);
-                user.FavoriteGenres = GenerateRandomGenres(10);
+                user.FavoriteBooks = books;
+                user.FavoriteAuthors = authors;
+                user.FavoriteGenres = genres;
             }
 
             context.SaveChanges();
