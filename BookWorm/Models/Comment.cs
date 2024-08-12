@@ -12,6 +12,8 @@ namespace BookWorm.Models
 
         public int Rating { get; set; }
 
+        public DateTime CommentedAt { get; set; }
+
         [ForeignKey("UserId")]
         public ApplicationUser CommentedBy { get; set; }
     }
