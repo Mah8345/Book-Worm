@@ -60,6 +60,21 @@ namespace BookWorm.Tests.TestHelpers
             return authors;
         }
 
+        public static List<Award> GenerateRandomAwards(int count)
+        {
+            var awards = new List<Award>();
+            for (int i = 0; i < count; i++)
+            {
+                awards.Add(new Award()
+                {
+                    Name = $"Award_{i}",
+                    About = $"About Award_{i}"
+                });
+            }
+
+            return awards;
+        }
+
         private static List<ApplicationUser> GenerateRandomUsers(int count)
         {
             var random = new Random();
