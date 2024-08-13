@@ -89,6 +89,28 @@ namespace BookWorm.Tests.TestHelpers
             return authors;
         }
 
+        public static List<Publisher> GenerateRandomPublishers(int count, bool generateImageForPublishers = false)
+        {
+            List<ApplicationImage>? images = null;
+            if (generateImageForPublishers)
+            {
+                images = GenerateRandomImages(count);
+            }
+            var publishers = new List<Publisher>();
+            for (var i = 0; i < count; i++)
+            {
+                publishers.Add(new Publisher()
+                {
+                    Name = $"Publisher_{i}",
+                    NormalizedName = $"PUBLISHER_{i}",
+                    About = $"about Publisher_{i}",
+                    PublisherLogo = images?[i]
+                });
+            }
+
+            return publishers;
+        }
+
         public static List<Award> GenerateRandomAwards(int count)
         {
             var awards = new List<Award>();
@@ -120,6 +142,23 @@ namespace BookWorm.Tests.TestHelpers
             }
 
             return comments;
+        }
+
+        public static List<Review> GenerateRandomReviews(int count)
+        {
+            var users = GenerateRandomUsers(count);
+            var reviews = new List<Review>();
+            for (int i = 0; i < count; i++)
+            {
+                reviews.Add(new Review()
+                {
+                    Title = $"Review_{i}",
+                    Body = $"Review Body_{i}",
+                    ReviewedBy = users[i]
+                });
+            }
+
+            return reviews;
         }
 
         public static List<ApplicationUser> GenerateRandomUsers(int count)
