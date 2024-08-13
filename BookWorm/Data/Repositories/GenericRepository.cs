@@ -36,10 +36,5 @@ namespace BookWorm.Data.Repositories
 
             DbSet.Remove(entity);
         }
-
-        public async Task SaveAsync()
-        {
-            await Context.SaveChangesAsync();
-        }
     }
 }

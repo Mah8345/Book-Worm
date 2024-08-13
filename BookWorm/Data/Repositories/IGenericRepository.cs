@@ -12,6 +12,5 @@
 
         Task DeleteAsync(object id);
 
-        Task SaveAsync();
     }
 }
