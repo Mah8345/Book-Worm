@@ -29,18 +29,26 @@ namespace BookWorm.Data.UnitOfWork
             ReviewRepository = new ReviewRepository(context);
         }
 
+        public async Task<int> SaveChangesAsync()
+        {
+            return await Context.SaveChangesAsync();
+        }
+
         public void BeginTransaction()
         {
             _transactionObj = Context.Database.BeginTransaction();
         }
 
 
-        public void Commit()
+        public async Task CommitAsync()
         {
             try
             {
-                Context.SaveChanges();
-                _transactionObj?.Commit();
+                await SaveChangesAsync();
+                if (_transactionObj != null)
+                {
+                    await _transactionObj.CommitAsync();
+                }
             }
             catch
             {
