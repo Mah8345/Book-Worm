@@ -32,7 +32,7 @@ namespace BookWorm.Data.Repositories
         public async Task DeleteAsync(object id)
         {
             var entity = await DbSet.FindAsync(id);
-            if (entity == null) throw new EntityNotFoundException(nameof(entity), id);
+            if (entity == null) throw new EntityNotFoundException(typeof(TEntity), nameof(entity), id);
 
             DbSet.Remove(entity);
         }
