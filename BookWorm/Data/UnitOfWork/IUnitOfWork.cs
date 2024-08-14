@@ -4,6 +4,7 @@ namespace BookWorm.Data.UnitOfWork
 {
     public interface IUnitOfWork
     { 
+        ApplicationDbContext Context { get; }
         ApplicationUserRepository ApplicationUserRepository { get; }
         AuthorRepository AuthorRepository { get; }
         AwardRepository AwardRepository { get; }
