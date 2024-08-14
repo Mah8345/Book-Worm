@@ -2,15 +2,12 @@
 {
     public class EntityNotFoundException : Exception
     {
-        public EntityNotFoundException(string message) : base(message)
+        public Type EntityType { get;}
+
+        public EntityNotFoundException(Type entityType, string entityName, object key)
+            : base($"entity with type: {entityType.Name}, name: {entityName}, key: {key} was not found")
         {
-
-        }
-
-        public EntityNotFoundException(string entityName, object key)
-            : base($"{entityName} with key:{key} was not found")
-        {
-
+            EntityType = entityType;
         }
     }
 }
