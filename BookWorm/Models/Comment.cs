@@ -12,9 +12,9 @@ namespace BookWorm.Models
 
         public int Rating { get; set; }
 
-        public DateTime CommentedAt { get; set; }
+        public DateTime CommentedAt { get; set; } = DateTime.Now;
 
         [ForeignKey("UserId")]
-        public ApplicationUser CommentedBy { get; set; }
+        public virtual ApplicationUser CommentedBy { get; set; }
     }
 }

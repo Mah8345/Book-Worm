@@ -13,9 +13,9 @@ namespace BookWorm.Models
 
 
         [ForeignKey("UserId")]
-        public ApplicationUser ReviewedBy { get; set; }
+        public virtual ApplicationUser ReviewedBy { get; set; }
 
         public int BookId { get; set; }
-        public Book ReviewedBook { get; set; }
+        public virtual Book ReviewedBook { get; set; }
     }
 }

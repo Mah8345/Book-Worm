@@ -20,18 +20,18 @@ namespace BookWorm.Models
         public string AverageRating => Comments.Average(c => Convert.ToDouble(c.Rating)).ToString("F1");
 
         [ForeignKey("ImageId")]
-        public ApplicationImage? CoverPhoto { get; set; }
+        public virtual ApplicationImage? CoverPhoto { get; set; }
 
         [ForeignKey("PublisherId")]
-        public Publisher? Publisher { get; set; }
+        public virtual Publisher? Publisher { get; set; }
 
-        public ICollection<Author> Authors { get; set; }
-        public ICollection<Genre> AssociatedGenres { get; set; }
-        public ICollection<Award> Awards { get; set; }
-        public ICollection<Review> Reviews { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Author> Authors { get; set; }
+        public virtual ICollection<Genre> AssociatedGenres { get; set; }
+        public virtual ICollection<Award> Awards { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
         //self referencing relationships
-        public ICollection<Book> SimilarBooks { get; set; }
+        public virtual ICollection<Book> SimilarBooks { get; set; }
     }
 }

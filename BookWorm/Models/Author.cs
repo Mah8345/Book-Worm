@@ -15,7 +15,7 @@ namespace BookWorm.Models
         public string? About { get; set; }
 
         [ForeignKey("ImageId")]
-        public ApplicationImage? Photo { get; set; }
-        public ICollection<Book> WrittenBooks { get; set; }
+        public virtual ApplicationImage? Photo { get; set; }
+        public virtual ICollection<Book> WrittenBooks { get; set; }
     }
 }

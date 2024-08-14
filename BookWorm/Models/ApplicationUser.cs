@@ -34,16 +34,16 @@ namespace BookWorm.Models
         public string? Bio { get; set; }
 
         [ForeignKey("ImageId")]
-        public ApplicationImage? ProfilePhoto { get; set; }
+        public virtual ApplicationImage? ProfilePhoto { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
-        public ICollection<Genre> FavoriteGenres { get; set; }
-        public ICollection<Author> FavoriteAuthors { get; set; }
-        public ICollection<Review> Reviews { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Genre> FavoriteGenres { get; set; }
+        public virtual ICollection<Author> FavoriteAuthors { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
         //book related properties
-        public ICollection<Book> FavoriteBooks { get; set; }
-        public ICollection<Book> WantToReadBooks { get; set; }
-        public ICollection<Book> ReadBooks { get; set; }
+        public virtual ICollection<Book> FavoriteBooks { get; set; }
+        public virtual ICollection<Book> WantToReadBooks { get; set; }
+        public virtual ICollection<Book> ReadBooks { get; set; }
 
     }
 }
