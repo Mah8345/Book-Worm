@@ -21,6 +21,7 @@ namespace BookWorm.Data
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
