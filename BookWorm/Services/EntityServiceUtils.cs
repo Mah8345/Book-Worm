@@ -36,6 +36,10 @@ namespace BookWorm.Services
 
         public static async Task AddToList<T>(T listMember, ICollection<T> list, IUnitOfWork unitOfWork)
         {
+            if (list.Contains(listMember))
+            {
+                throw new ArgumentException("member already exists in the list");
+            }
             list.Add(listMember);
             await unitOfWork.SaveChangesAsync();
         }
