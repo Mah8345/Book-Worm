@@ -1,4 +1,5 @@
-﻿using BookWorm.Models;
+﻿using System.Linq.Expressions;
+using BookWorm.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -41,6 +42,20 @@ namespace BookWorm.Data.Repositories
                 Comments = result.Comments
             };
         }
+
+        
+        public Task<Book?> GetBookWith<TEntity>(int id, params Expression<Func<Book, TEntity>>[] navigationProperties)
+        {
+            var query = Context.Books.AsQueryable();
+
+            foreach (var navigationProperty in navigationProperties)
+            {
+                query.Include(navigationProperty);
+            }
+
+            return query.FirstOrDefaultAsync(b => b.Id == id);
+        }
+
 
         public async Task<IEnumerable<Book>> SearchByNameAsync(string key)
         {
