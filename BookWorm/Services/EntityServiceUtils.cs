@@ -34,6 +34,30 @@ namespace BookWorm.Services
         }
 
 
+        public static async Task<Author> GetAuthor(int authorId, IUnitOfWork unitOfWork)
+        {
+            var author = await unitOfWork.AuthorRepository.GetByIdAsync(authorId)
+                         ?? throw new EntityNotFoundException(typeof(Author), "author", authorId);
+            return author;
+        }
+
+
+        public static async Task<Comment> GetComment(int commentId, IUnitOfWork unitOfWork)
+        {
+            var comment = await unitOfWork.Context.Comments.FindAsync(commentId)
+                          ?? throw new EntityNotFoundException(typeof(Comment), "comment", commentId);
+            return comment;
+        }
+
+
+        public static async Task<Genre> GetGenre(int genreId, IUnitOfWork unitOfWork)
+        {
+            var genre = await unitOfWork.GenreRepository.GetByIdAsync(genreId)
+                        ?? throw new EntityNotFoundException(typeof(Genre), "genre", genreId);
+            return genre;
+        }
+
+
         public static async Task AddToList<T>(T listMember, ICollection<T> list, IUnitOfWork unitOfWork)
         {
             if (list.Contains(listMember))
