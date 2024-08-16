@@ -44,7 +44,7 @@ namespace BookWorm.Data.Repositories
         }
 
         
-        public Task<Book?> GetBookWith<TEntity>(int id, params Expression<Func<Book, TEntity>>[] navigationProperties)
+        public async Task<Book?> GetBookWith<TEntity>(int id, params Expression<Func<Book, TEntity>>[] navigationProperties)
         {
             var query = Context.Books.AsQueryable();
 
@@ -53,7 +53,7 @@ namespace BookWorm.Data.Repositories
                 query.Include(navigationProperty);
             }
 
-            return query.FirstOrDefaultAsync(b => b.Id == id);
+            return await query.FirstOrDefaultAsync(b => b.Id == id);
         }
 
 
