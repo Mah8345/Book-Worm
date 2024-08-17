@@ -30,5 +30,16 @@ namespace BookWorm.Models
         public virtual ApplicationImage? Photo { get; set; }
 
         public virtual ICollection<Book> WrittenBooks { get; set; } = [];
+
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is Author other)
+            {
+                return Id == other.Id;
+            }
+
+            return false;
+        }
     }
 }

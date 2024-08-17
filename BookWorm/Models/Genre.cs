@@ -28,5 +28,15 @@ namespace BookWorm.Models
         public virtual required ApplicationImage Photo { get; set; }
 
         public virtual ICollection<Book> AssociatedBooks { get; set; } = [];
+
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is Genre other)
+            {
+                return Id == other.Id;
+            }
+            return false;
+        }
     }
 }
