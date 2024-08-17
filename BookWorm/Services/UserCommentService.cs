@@ -7,7 +7,7 @@ namespace BookWorm.Services
     {
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
-        public async Task AddComment(string userId, int bookId, Comment comment)
+        public async Task AddCommentAsync(string userId, int bookId, Comment comment)
         {
             var user = await EntityServiceUtils.GetUser(userId, user => user.Comments, _unitOfWork);
             var book = await EntityServiceUtils.GetBook(bookId, book => book.Comments, _unitOfWork);
@@ -16,7 +16,7 @@ namespace BookWorm.Services
         }
 
 
-        public async Task<bool> RemoveComment(string userId, int bookId, int commentId)
+        public async Task<bool> RemoveCommentAsync(string userId, int bookId, int commentId)
         {
             var user = await EntityServiceUtils.GetUser(userId, user => user.Comments, _unitOfWork);
             var book = await EntityServiceUtils.GetBook(bookId, book => book.Comments, _unitOfWork);

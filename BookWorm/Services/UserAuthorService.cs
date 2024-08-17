@@ -15,7 +15,7 @@ namespace BookWorm.Services
         }
 
 
-        public async Task<bool> RemoveAuthorFromFavorites(string userId, int authorId)
+        public async Task<bool> RemoveAuthorFromFavoritesAsync(string userId, int authorId)
         {
             var user = await EntityServiceUtils.GetUser(userId, user => user.FavoriteAuthors, unitOfWork);
             var author = await EntityServiceUtils.GetAuthor(authorId, unitOfWork);

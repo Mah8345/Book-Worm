@@ -86,7 +86,7 @@ namespace BookWorm.Tests.ServicesTest
 
             //assert
             Assert.NotNull(result);
-            Assert.True(await _userAuthorService.RemoveAuthorFromFavorites(user.Id, author.Id));
+            Assert.True(await _userAuthorService.RemoveAuthorFromFavoritesAsync(user.Id, author.Id));
         }
     }
 }

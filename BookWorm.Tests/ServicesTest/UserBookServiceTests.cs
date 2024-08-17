@@ -140,7 +140,7 @@ namespace BookWorm.Tests.ServicesTest
 
             //assert
             Assert.NotNull(result);
-            Assert.True(await _userBookService.RemoveBookFromFavorites(result.Id,book.Id));
+            Assert.True(await _userBookService.RemoveBookFromFavoritesAsync(result.Id,book.Id));
         }
 
 
@@ -163,7 +163,7 @@ namespace BookWorm.Tests.ServicesTest
 
             //assert
             Assert.NotNull(result);
-            await Assert.ThrowsAsync<ArgumentException>(async () => await _userBookService.RemoveBookFromFavorites(result.Id, book.Id));
+            await Assert.ThrowsAsync<ArgumentException>(async () => await _userBookService.RemoveBookFromFavoritesAsync(result.Id, book.Id));
         }
 
 
@@ -186,7 +186,7 @@ namespace BookWorm.Tests.ServicesTest
 
             //assert
             Assert.NotNull(result);
-            await Assert.ThrowsAsync<ArgumentException>(async () => await _userBookService.RemoveBookFromWantToReadList(result.Id, book.Id));
+            await Assert.ThrowsAsync<ArgumentException>(async () => await _userBookService.RemoveBookFromWantToReadListAsync(result.Id, book.Id));
         }
 
 
@@ -209,7 +209,7 @@ namespace BookWorm.Tests.ServicesTest
 
             //assert
             Assert.NotNull(result);
-            await Assert.ThrowsAsync<ArgumentException>(async () => await _userBookService.RemoveBookFromReadList(result.Id, book.Id));
+            await Assert.ThrowsAsync<ArgumentException>(async () => await _userBookService.RemoveBookFromReadListAsync(result.Id, book.Id));
         }
     }
 }
