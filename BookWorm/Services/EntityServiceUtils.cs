@@ -71,7 +71,7 @@ namespace BookWorm.Services
 
         public static async Task<bool> RemoveFromList<T>(T listMember, ICollection<T> list, IUnitOfWork unitOfWork)
         {
-            if (list == null || list.Count == 0)
+            if (list.Count == 0)
             {
                 throw new ArgumentException("it is not possible to remove a member from a null or empty list");
             }
