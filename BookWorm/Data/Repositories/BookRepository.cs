@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace BookWorm.Data.Repositories
 {
-    public class BookRepository(ApplicationDbContext context) : GenericRepository<Book>(context),IBookRepository
+    public class BookRepository(ApplicationDbContext context) : GenericRepository<Book>(context), IBookRepository
     {
         public async Task<Book?> GetBookByIdAsync(int id)
         {
