@@ -38,29 +38,25 @@ namespace BookWorm.Tests.RepositoryTests
                 FileSize = 1024
             };
             var comments = TestHelper.GenerateRandomComments(10);
-            var genres = TestHelper.GenerateRandomGenres(10, true);
+            var genres = TestHelper.GenerateRandomGenres(10);
             var publisherImage = new ApplicationImage()
             {
                 FileName = "publisher1_logo.png",
                 FileSize = 1024
             };
-            var publisher = new Publisher()
+            var publisher = new Publisher("publisher1")
             {
-                Name = "publisher1",
-                NormalizedName = "PUBLISHER1",
                 About = "about1",
                 PublisherLogo = publisherImage
             };
             var authors = TestHelper.GenerateRandomAuthors(10, true);
-            var book = new Book()
+            var book = new Book("Title1")
             {
                 AssociatedGenres = genres,
                 Authors = authors,
                 Comments = comments,
                 CoverPhoto = cover,
                 Introduction = "introduction1",
-                Title = "Title1",
-                NormalizedTitle = "TITLE1",
                 Publisher = publisher,
                 PagesNumber = 120
             };

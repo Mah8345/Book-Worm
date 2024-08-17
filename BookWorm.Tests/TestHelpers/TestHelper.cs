@@ -30,10 +30,8 @@ namespace BookWorm.Tests.TestHelpers
             var books = new List<Book>();
             for (int i = 0; i < count; i++)
             {
-                books.Add(new Book()
+                books.Add(new Book($"Book_{i}")
                 {
-                    Title = $"Book_{i}",
-                    NormalizedTitle = $"BOOK_{i}",
                     Introduction = $"introduction_{i}",
                     Summary = $"summary_{i}",
                     PagesNumber = 100 + (i % 3) * 20
@@ -44,25 +42,19 @@ namespace BookWorm.Tests.TestHelpers
         }
 
 
-        public static List<Genre> GenerateRandomGenres(int count, bool generateImageForGenres = false)
+        public static List<Genre> GenerateRandomGenres(int count)
         {
-            List<ApplicationImage>? images = null;
-            if (generateImageForGenres)
-            {
-                images = GenerateRandomImages(count);
-            }
+            var images = GenerateRandomImages(count);
             var genres = new List<Genre>();
             for (int i = 0; i < count; i++)
             {
-                genres.Add(new Genre()
+                genres.Add(new Genre($"Genre_{i}")
                 {
                     Name = $"Genre_{i}",
-                    NormalizedName = $"GENRE_{i}",
                     Description = $"description_{i}",
-                    Photo = images?[i]
+                    Photo = images[i]
                 });
             }
-
             return genres;
         }
 
@@ -77,10 +69,8 @@ namespace BookWorm.Tests.TestHelpers
             var authors = new List<Author>();
             for (int i = 0; i < count; i++)
             {
-                authors.Add(new Author()
+                authors.Add(new Author($"Author{i}")
                 {
-                    Name = $"Author{i}",
-                    NormalizedName = $"AUTHOR{i}",
                     About = $"about Author_{i}",
                     Photo = images?[i]
                 });
@@ -99,10 +89,8 @@ namespace BookWorm.Tests.TestHelpers
             var publishers = new List<Publisher>();
             for (var i = 0; i < count; i++)
             {
-                publishers.Add(new Publisher()
+                publishers.Add(new Publisher($"Publisher_{i}")
                 {
-                    Name = $"Publisher_{i}",
-                    NormalizedName = $"PUBLISHER_{i}",
                     About = $"about Publisher_{i}",
                     PublisherLogo = images?[i]
                 });
@@ -134,7 +122,6 @@ namespace BookWorm.Tests.TestHelpers
             {
                 comments.Add(new Comment()
                 {
-                    CommentedAt = DateTime.Now,
                     Rating = 5,
                     Body = $"Comment_{i}",
                     CommentedBy = users[i]
@@ -147,6 +134,7 @@ namespace BookWorm.Tests.TestHelpers
         public static List<Review> GenerateRandomReviews(int count)
         {
             var users = GenerateRandomUsers(count);
+            var book = GenerateRandomBooks(count);
             var reviews = new List<Review>();
             for (int i = 0; i < count; i++)
             {
@@ -154,7 +142,8 @@ namespace BookWorm.Tests.TestHelpers
                 {
                     Title = $"Review_{i}",
                     Body = $"Review Body_{i}",
-                    ReviewedBy = users[i]
+                    ReviewedBy = users[i],
+                    ReviewedBook = book[i]
                 });
             }
 

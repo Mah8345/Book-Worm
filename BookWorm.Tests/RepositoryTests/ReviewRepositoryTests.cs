@@ -28,10 +28,8 @@ namespace BookWorm.Tests.RepositoryTests
         {
             // Arrange
             var reviews = TestHelper.GenerateRandomReviews(10);
-            var book = new Book()
+            var book = new Book("Book_1")
             {
-                Title = "Book_1",
-                NormalizedTitle = "BOOK_1",
                 Introduction = "introduction_1",
                 Reviews = reviews
             };

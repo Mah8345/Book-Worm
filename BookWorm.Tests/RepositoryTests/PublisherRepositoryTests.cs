@@ -33,11 +33,8 @@ namespace BookWorm.Tests.RepositoryTests
         {
             // Arrange
             var books = TestHelper.GenerateRandomBooks(2);
-            var publisher = new Publisher
+            var publisher = new Publisher("Publisher 1")
             {
-                Id = 1,
-                Name = "Publisher 1",
-                NormalizedName = "PUBLISHER 1",
                 PublishedBooks = books
             };
             _context.Publishers.Add(publisher);

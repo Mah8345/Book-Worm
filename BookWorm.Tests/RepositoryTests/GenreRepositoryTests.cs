@@ -33,10 +33,8 @@ namespace BookWorm.Tests.RepositoryTests
         {
             //Arrange
             var associatedBooks = TestHelper.GenerateRandomBooks(10);
-            var genre = new Genre()
+            var genre = new Genre("Genre1")
             {
-                Name = "Genre1",
-                NormalizedName = "GENRE1",
                 AssociatedBooks = associatedBooks,
                 Photo = new ApplicationImage()
                 {
@@ -64,7 +62,7 @@ namespace BookWorm.Tests.RepositoryTests
         public async Task SearchByNameAsync_BooksExist_ReturnBooks()
         {
             //Arrange
-            var genres = TestHelper.GenerateRandomGenres(10, true);
+            var genres = TestHelper.GenerateRandomGenres(10);
             var key = genres.First().Name[..3];
             await _context.Genres.AddRangeAsync(genres);
             await _context.SaveChangesAsync();
