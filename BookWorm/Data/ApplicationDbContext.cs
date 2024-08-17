@@ -27,13 +27,21 @@ namespace BookWorm.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            ConfigureApplicationImage(builder);
             ConfigureApplicationUser(builder);
             ConfigureBook(builder);
             ConfigureAuthor(builder);
             ConfigureGenre(builder);
             ConfigurePublisher(builder);
+            ConfigureComment(builder);
         }
 
+        private void ConfigureApplicationImage(ModelBuilder builder)
+        {
+            builder.Entity<ApplicationImage>()
+                .Property(i => i.UploadedOn)
+                .HasColumnName("UploadedOn");
+        }
         private void ConfigureApplicationUser(ModelBuilder builder)
         {
             builder.Entity<ApplicationUser>()
@@ -171,6 +179,13 @@ namespace BookWorm.Data
             builder.Entity<Publisher>()
                 .Property(p => p.NormalizedName)
                 .HasComputedColumnSql("UPPER(Name)");
+        }
+
+        private void ConfigureComment(ModelBuilder builder)
+        {
+            builder.Entity<Comment>()
+                .Property(c => c.CommentedAt)
+                .HasColumnName("CommentedAt");
         }
     }
 }

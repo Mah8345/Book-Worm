@@ -27,11 +27,9 @@ namespace BookWorm.Data.Repositories
                 .FirstOrDefaultAsync();
             if (result == null) return null;
 
-            return new Book()
+            return new Book(result.Book.Title)
             {
                 Id = result.Book.Id,
-                Title = result.Book.Title,
-                NormalizedTitle = result.Book.NormalizedTitle,
                 Introduction = result.Book.Introduction,
                 Summary = result.Book.Summary,
                 PagesNumber = result.Book.PagesNumber,
