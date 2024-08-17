@@ -10,8 +10,6 @@ namespace BookWorm.Services
         public async Task AddBookToFavoritesAsync(string userId, int bookId)
         {
             var user = await EntityServiceUtils.GetUser(userId, user => user.FavoriteBooks, _unitOfWork);
-            //this happens when the user has no favorite books currently.
-            user.FavoriteBooks ??= [];
             var book = await EntityServiceUtils.GetBook(bookId,_unitOfWork);
             await EntityServiceUtils.AddToList(book, user.FavoriteBooks, _unitOfWork);
         }
@@ -20,7 +18,6 @@ namespace BookWorm.Services
         public async Task AddBookToReadListAsync(string userId, int bookId)
         {
             var user = await EntityServiceUtils.GetUser(userId, user => user.ReadBooks, _unitOfWork);
-            user.ReadBooks ??= [];
             var book = await EntityServiceUtils.GetBook(bookId,_unitOfWork);
             await EntityServiceUtils.AddToList(book, user.ReadBooks, _unitOfWork);
         }
@@ -29,7 +26,6 @@ namespace BookWorm.Services
         public async Task AddBookToWantToReadListAsync(string userId, int bookId)
         {
             var user = await EntityServiceUtils.GetUser(userId, user => user.WantToReadBooks, _unitOfWork);
-            user.WantToReadBooks ??= [];
             var book = await EntityServiceUtils.GetBook(bookId,_unitOfWork);
             await EntityServiceUtils.AddToList(book, user.WantToReadBooks, _unitOfWork);
         }

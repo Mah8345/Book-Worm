@@ -10,7 +10,6 @@ namespace BookWorm.Services
         public async Task AddGenreToFavoritesAsync(string userId, int genreId)
         {
             var user = await EntityServiceUtils.GetUser(userId, user => user.FavoriteGenres, _unitOfWork);
-            user.FavoriteAuthors ??= [];
             var genre = await EntityServiceUtils.GetGenre(genreId, _unitOfWork);
             await EntityServiceUtils.AddToList(genre, user.FavoriteGenres, _unitOfWork);
         }
