@@ -42,7 +42,7 @@ namespace BookWorm.Data.Repositories
         }
 
         
-        public async Task<Book?> GetBookWith<TEntity>(int id, params Expression<Func<Book, TEntity>>[] navigationProperties)
+        public async Task<Book?> GetBookWithAsync<TEntity>(int id, params Expression<Func<Book, TEntity>>[] navigationProperties)
         {
             var query = Context.Books.AsQueryable();
 
@@ -64,6 +64,28 @@ namespace BookWorm.Data.Repositories
                 .Where(b => b.NormalizedTitle.Contains(key))
                 .ToListAsync();
             return books.IsNullOrEmpty() ? [] : books;
+        }
+
+
+        public async Task<IEnumerable<Book>> GetBooksWithGenreAsync(Genre genre)
+        {
+            var books = await Context.Books
+                .Include(b => b.CoverPhoto)
+                .Include(b => b.AssociatedGenres)
+                .ToListAsync();
+            var result = books.IsNullOrEmpty() ? [] : books.Where(b => b.AssociatedGenres.Contains(genre));
+            return result;
+        }
+
+
+        public async Task<IEnumerable<Book>> GetBooksWithAuthorAsync(Author author)
+        {
+            var books = await Context.Books
+                .Include(b => b.CoverPhoto)
+                .Include(b => b.Authors)
+                .ToListAsync();
+            var result = books.IsNullOrEmpty() ? [] : books.Where(b => b.Authors.Contains(author));
+            return result;
         }
     }
 }
