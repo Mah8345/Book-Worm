@@ -10,10 +10,10 @@ namespace BookWorm.Models
     {
 
         [MaxLength(50)]
-        public string FirstName { get; set; }
+        public required string FirstName { get; set; }
 
         [MaxLength(50)]
-        public string LastName { get; set; }
+        public required string LastName { get; set; }
 
         public DateTime? DateOfBirth { get; set; }
         public int? Age
@@ -36,14 +36,15 @@ namespace BookWorm.Models
         [ForeignKey("ImageId")]
         public virtual ApplicationImage? ProfilePhoto { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Genre> FavoriteGenres { get; set; }
-        public virtual ICollection<Author> FavoriteAuthors { get; set; }
-        public virtual ICollection<Review> Reviews { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; } = [];
+        public virtual ICollection<Genre> FavoriteGenres { get; set; } = [];
+        public virtual ICollection<Author> FavoriteAuthors { get; set; } = [];
+
+        public virtual ICollection<Review> Reviews { get; set; } = [];
         //book related properties
-        public virtual ICollection<Book> FavoriteBooks { get; set; }
-        public virtual ICollection<Book> WantToReadBooks { get; set; }
-        public virtual ICollection<Book> ReadBooks { get; set; }
+        public virtual ICollection<Book> FavoriteBooks { get; set; } = [];
+        public virtual ICollection<Book> WantToReadBooks { get; set; } = [];
+        public virtual ICollection<Book> ReadBooks { get; set; } = [];
 
     }
 }

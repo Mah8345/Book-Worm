@@ -5,16 +5,17 @@ namespace BookWorm.Models
 {
     public class Award
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
         [MaxLength(50)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [MaxLength(1000)]
         public string? About { get; set; }
 
         [ForeignKey("ImageId")]
         public virtual ApplicationImage? AwardPhoto { get; set; }
-        public virtual ICollection<Book> AwardedBooks { get; set; }
+
+        public virtual ICollection<Book> AwardedBooks { get; set; } = [];
     }
 }

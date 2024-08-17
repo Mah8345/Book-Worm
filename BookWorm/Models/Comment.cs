@@ -5,16 +5,16 @@ namespace BookWorm.Models
 {
     public class Comment
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
         [MaxLength(400)]
         public string? Body { get; set; }
 
         public int Rating { get; set; }
 
-        public DateTime CommentedAt { get; set; } = DateTime.Now;
+        public DateTime CommentedAt { get; } = DateTime.Now;
 
         [ForeignKey("UserId")]
-        public virtual ApplicationUser CommentedBy { get; set; }
+        public virtual required ApplicationUser CommentedBy { get; set; }
     }
 }

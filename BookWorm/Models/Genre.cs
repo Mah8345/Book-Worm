@@ -3,19 +3,30 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookWorm.Models
 {
-    public class Genre
+    public class Genre(string name)
     {
-        public int Id { get; set; }
+        private string _name = name;
+        public int Id { get; private set; }
 
         [MaxLength(50)]
-        public string Name { get; set; }
-        public string NormalizedName { get; set; }
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                _name = value;
+                NormalizedName = value.ToUpper();
+            }
+        }
+
+        public string NormalizedName { get; private set; } = name.ToUpper();
 
         [MaxLength(1000)]
         public string? Description { get; set; }
 
         [ForeignKey("ImageId")]
-        public virtual ApplicationImage Photo { get; set; }
-        public virtual ICollection<Book> AssociatedBooks { get; set; }
+        public virtual required ApplicationImage Photo { get; set; }
+
+        public virtual ICollection<Book> AssociatedBooks { get; set; } = [];
     }
 }
