@@ -29,7 +29,7 @@ namespace BookWorm.Models
         public string? Summary { get; set; }
 
         public int? PagesNumber { get; set; }
-        public string AverageRating => Comments.Average(c => Convert.ToDouble(c.Rating)).ToString("F1");
+        public double AverageRating => Comments.Average(c => Convert.ToDouble(c.Rating));
 
         [ForeignKey("ImageId")]
         public virtual ApplicationImage? CoverPhoto { get; set; }
