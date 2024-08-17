@@ -9,9 +9,9 @@ namespace BookWorm.Data.Repositories
         protected readonly DbSet<TEntity> DbSet = context.Set<TEntity>();
 
 
-        public IQueryable<TEntity> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return DbSet;
+            return await DbSet.ToListAsync();
         }
 
         public async Task<TEntity?> GetByIdAsync(object id)
