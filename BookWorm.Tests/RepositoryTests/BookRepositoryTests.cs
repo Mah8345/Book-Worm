@@ -22,7 +22,7 @@ namespace BookWorm.Tests.RepositoryTests
         {
             _testOutputHelper = testOutputHelper;
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "BookWormTest")
+                .UseInMemoryDatabase(databaseName: $"BookWormTest_{Guid.NewGuid()}")
                 .Options;
             _context = new ApplicationDbContext(options);
             _bookRepository = new BookRepository(_context);

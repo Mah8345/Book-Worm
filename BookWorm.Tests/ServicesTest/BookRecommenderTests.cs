@@ -24,7 +24,7 @@ namespace BookWorm.Tests.ServicesTest
         {
             _testOutputHelper = testOutputHelper;
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "BookWorm")
+                .UseInMemoryDatabase(databaseName: $"BookWormTest_{Guid.NewGuid()}")
                 .Options;
             _context = new ApplicationDbContext(options);
             _bookRecommender = new BookRecommender(new BookRepository(_context));
