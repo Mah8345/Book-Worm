@@ -48,8 +48,8 @@ namespace BookWorm.Services
 
         public async Task<List<Book>> RecommendBasedOnIntroductionDate(int count)
         {
-            var books = await bookRepository.GetAllBooksIncludeAsync(b => b.AddedAt);
-            books = books.OrderByDescending(b => b.AddedAt).Take(count);
+            var books = await bookRepository.GetAllBooksIncludeAsync(b => b.IntroducedAt);
+            books = books.OrderByDescending(b => b.IntroducedAt).Take(count);
             return books.ToList();
         }
     }

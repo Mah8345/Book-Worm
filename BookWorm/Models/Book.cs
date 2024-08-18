@@ -31,7 +31,7 @@ namespace BookWorm.Models
         public int? PagesNumber { get; set; }
         public double AverageRating => Comments.Average(c => Convert.ToDouble(c.Rating));
 
-        public DateTime AddedAt { get; set; }
+        public DateTime IntroducedAt { get; set; }
 
         [ForeignKey("ImageId")]
         public virtual ApplicationImage? CoverPhoto { get; set; }
