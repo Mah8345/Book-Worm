@@ -46,7 +46,7 @@ namespace BookWorm.Data
         {
             builder.Entity<ApplicationUser>()
                 .HasMany<Book>(u => u.FavoriteBooks)
-                .WithMany()
+                .WithMany(b => b.FavoritedByUsers)
                 .UsingEntity<Dictionary<string, object>>
                 (
                     "FavoriteBooks",

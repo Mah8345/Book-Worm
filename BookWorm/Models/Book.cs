@@ -43,6 +43,8 @@ namespace BookWorm.Models
         public virtual ICollection<Review> Reviews { get; set; } = [];
         public virtual ICollection<Comment> Comments { get; set; } = [];
 
+        public virtual ICollection<ApplicationUser> FavoritedByUsers { get; set; } = [];
+
         //self referencing relationships
         public virtual ICollection<Book> SimilarBooks { get; set; } = [];
     }
