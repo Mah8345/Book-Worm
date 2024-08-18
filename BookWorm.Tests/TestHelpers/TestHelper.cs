@@ -27,6 +27,10 @@ namespace BookWorm.Tests.TestHelpers
 
         public static List<Book> GenerateRandomBooks(int count)
         {
+            var startDate = DateTime.Now.AddYears(-3);
+            var endDate = DateTime.Now;
+            var range = (endDate - startDate).Days;
+            
             var books = new List<Book>();
             for (int i = 0; i < count; i++)
             {
@@ -34,7 +38,8 @@ namespace BookWorm.Tests.TestHelpers
                 {
                     Introduction = $"introduction_{i}",
                     Summary = $"summary_{i}",
-                    PagesNumber = 100 + (i % 3) * 20
+                    PagesNumber = 100 + (i % 3) * 20,
+                    IntroducedAt = startDate.AddDays(new Random().Next(range))
                 });
             }
 
@@ -122,7 +127,7 @@ namespace BookWorm.Tests.TestHelpers
             {
                 comments.Add(new Comment()
                 {
-                    Rating = 5,
+                    Rating = new Random().Next(1,5),
                     Body = $"Comment_{i}",
                     CommentedBy = users[i]
                 });
