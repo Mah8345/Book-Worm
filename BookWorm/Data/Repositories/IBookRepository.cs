@@ -9,7 +9,12 @@ namespace BookWorm.Data.Repositories
         Task<Book?> GetBookByIdAsync(int id);
         
 
-        Task<Book?> GetBookWithAsync<TEntity>(int id , params Expression<Func<Book, TEntity>>[] navigationProperties);
+        Task<Book?> GetBookIncludeAsync<TEntity>(int id ,
+            params Expression<Func<Book, TEntity>>[] navigationProperties);
+
+
+        Task<IEnumerable<Book>> GetAllBooksIncludeAsync<TEntity>(
+            params Expression<Func<Book, TEntity>>[] navigationProperties);
 
 
         Task<IEnumerable<Book>> SearchByNameAsync(string key);
