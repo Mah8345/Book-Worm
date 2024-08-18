@@ -20,7 +20,7 @@ namespace BookWorm.Services
             Expression<Func<Book,TEntity>> navigationProperty, 
             IUnitOfWork unitOfWork)
         {
-            var book = await unitOfWork.BookRepository.GetBookWithAsync(bookId, navigationProperty)
+            var book = await unitOfWork.BookRepository.GetBookIncludeAsync(bookId, navigationProperty)
                        ?? throw new EntityNotFoundException(typeof(Book), "book", bookId);
             return book;
         }
