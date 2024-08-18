@@ -33,7 +33,7 @@ namespace BookWorm.Services
         public async Task<List<Book>> RecommendBasedOnRatingAsync(int count)
         {
             var books = await bookRepository.GetAllAsync();
-            books = books.OrderBy(b => b.AverageRating).Take(count);
+            books = books.OrderByDescending(b => b.AverageRating).Take(count);
             return books.ToList();
         }
 
@@ -41,7 +41,7 @@ namespace BookWorm.Services
         public async Task<List<Book>> RecommendBasedOnPopularityAsync(int count)
         {
             var books = await bookRepository.GetAllBooksIncludeAsync(b => b.FavoritedByUsers);
-            books = books.OrderBy(b => b.FavoritedByUsers.Count).Take(count);
+            books = books.OrderByDescending(b => b.FavoritedByUsers.Count).Take(count);
             return books.ToList();
         }
 
