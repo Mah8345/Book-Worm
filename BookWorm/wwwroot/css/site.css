@@ -7,6 +7,8 @@ body {
     line-height: 1.6;
 }
 
+
+
 a {
     color: #FFFFFF;
     text-decoration: none;
@@ -20,6 +22,10 @@ a {
 header {
     background-color: #1F1F1F;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
     header nav {
@@ -33,6 +39,24 @@ header {
             display: flex;
             gap: 20px;
         }
+
+
+/* Footer */
+footer {
+    background-color: #1F1F1F;
+    padding: 20px;
+    text-align: center;
+    color: #CCCCCC;
+}
+
+    footer a {
+        color: #CCCCCC;
+    }
+
+        footer a:hover {
+            color: #FFD700;
+        }
+
 
 /* Hero Section */
 .hero {
@@ -83,55 +107,101 @@ header {
         background-color: #FFC300;
     }
 
-
-/* Featured Books */
-.featured-books {
-    background-color: #2C2C2C;
-    padding: 50px 20px;
-}
-
-.book-card {
+nav {
     background-color: #333333;
-    padding: 20px;
+    padding: 15px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 
-    .book-card h3 {
-        color: #FFD700;
-        margin: 0 0 10px;
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
     }
 
-    .book-card p {
-        color: #CCCCCC;
-        margin: 0 0 10px;
+        nav ul li {
+            padding: 10px 15px;
+            border-radius: 5px;
+            background-color: #444444;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+            nav ul li a {
+                font-size: 18px;
+                font-weight: bold;
+                color: #FFD700; /* Matching the h1 color */
+                text-decoration: none;
+            }
+
+            nav ul li:hover {
+                background-color: #FFD700;
+                transform: scale(1.05); /* Slight zoom on hover */
+            }
+
+                nav ul li:hover a {
+                    color: #1A1A1A; /* Contrast text on hover */
+                }
+
+.logo h1 {
+    font-size: 36px;
+    margin: 0 0 10px;
+    color: #FFD700; /* Gold color for a classic touch */
+}
+
+.logo-search-container {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+    .logo-search-container h1 {
+        font-size: 36px;
+        margin: 0;
+        color: #FFD700; /* Gold color for the title */
+        flex: 0; /* Keep the logo on the left */
     }
 
-    .book-card .btn {
+.search-form {
+    position: absolute; /* Remove from normal flow */
+    left: 50%;
+    transform: translateX(-50%); /* Center the search bar */
+    display: flex;
+    align-items: center;
+}
+
+    .search-form input {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px 0 0 5px;
+        border: none;
+        width: 250px;
+        height: 40px; /* Set a fixed height to match the button */
+    }
+
+    .search-form button {
+        padding: 0 15px; /* Adjust padding to center the icon vertically */
         background-color: #FFD700;
-        color: #1A1A1A;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-weight: bold;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        height: 40px; /* Set the same height as the input */
         transition: background-color 0.3s;
     }
-
-        .book-card .btn:hover {
+        .search-form button:hover {
             background-color: #FFC300;
         }
-
-/* Footer */
-footer {
-    background-color: #1F1F1F;
-    padding: 20px;
-    text-align: center;
-    color: #CCCCCC;
-}
-
-    footer a {
-        color: #CCCCCC;
+    .search-form svg {
+        width: 20px;
+        height: 20px;
+        fill: #1A1A1A; /* Color of the magnifier */
     }
 
-        footer a:hover {
-            color: #FFD700;
-        }

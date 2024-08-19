@@ -14,15 +14,26 @@
 <body>
     <!-- Header -->
     <header>
-        <nav>
-            <div class="logo">
+        <div class="logo-search-container">
+            <a asp-action="Index" asp-controller="Home">
                 <h1>BookWorm</h1>
-            </div>
+            </a>
+            <form class="search-form">
+                <input type="text" placeholder="Search books, authors..." aria-label="Search">
+                <button type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1A1A1A" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001a1 1 0 0 0-.136.142l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.142-.136zm-5.44 1.638a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+        <nav>
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Books</a></li>
                 <li><a href="#">Authors</a></li>
                 <li><a href="#">Genres</a></li>
+                <li><a href="#">Awards</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -30,7 +41,7 @@
     </header>
 
     <div>
-        <main role="main" class="pb-3">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
