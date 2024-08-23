@@ -1,0 +1,78 @@
+﻿<div class="book-carousel-container">
+    <h2 class="carousel-title">@ViewData["BooksListTitle"]</h2>
+    <div class="book-carousel">
+        <div class="book-list-wrapper">
+            <div class="book-list">
+                @foreach (var book in Model)
+                {
+                    <div class="book-card">
+                        <img src="@book.CoverImagePath" alt="@book.Title" class="book-cover">
+                        <h3 class="book-title">@book.Title</h3>
+                        <div class="book-card-footer">
+                            <div class="favorite">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart" viewBox="0 0 16 16" fill="none" stroke="#FFD700" stroke-width="2">
+                                    <path d="M8 13.5S1 8.5 1 4a3.5 3.5 0 0 1 7 0 3.5 3.5 0 0 1 7 0c0 4.5-7 9.5-7 9.5z"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart-fill d-none" viewBox="0 0 16 16" fill="#FFD700">
+                                    <path fill-rule="evenodd" d="M8 1.314C3.562-3.248-.534 1.748 2.317 5.317 3.248 6.516 8 12 8 12s4.752-5.484 5.683-6.683C16.534 1.748 12.438-3.248 8 1.314z"/>
+                                </svg>
+                            </div>
+
+                            <div class="rating">
+                                <span>@book.Rating</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFD700" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path d="M3.612 15.443c-.73.518-1.69-.191-1.542-.926l.725-4.287L.173 6.765c-.52-.505-.233-1.426.504-1.527l4.332-.627L7.538.792c.329-.67 1.268-.67 1.597 0l2.029 4.819 4.332.627c.737.101 1.023 1.022.504 1.527l-3.617 3.465.725 4.287c.148.735-.812 1.444-1.542.926L8 13.187l-3.888 2.256z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button class="carousel-btn left-btn" aria-label="Scroll Left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFFFFF" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </button>
+            <button class="carousel-btn right-btn" aria-label="Scroll Right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFFFFF" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.book-carousel').forEach((carousel, index) => {
+        let scrollAmount = 0;
+        const scrollStep = 200;
+
+        const bookList = carousel.querySelector('.book-list');
+        const leftBtn = carousel.querySelector('.left-btn');
+        const rightBtn = carousel.querySelector('.right-btn');
+
+        leftBtn.addEventListener('click', function () {
+            scrollAmount = Math.max(scrollAmount - scrollStep, 0);
+            bookList.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        rightBtn.addEventListener('click', function () {
+            const maxScroll = bookList.scrollWidth - bookList.clientWidth;
+            scrollAmount = Math.min(scrollAmount + scrollStep, maxScroll);
+            bookList.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+        });
+    });
+
+    document.querySelectorAll('.favorite').forEach(favorite => {
+        const emptyHeart = favorite.querySelector('.bi-heart');
+        const filledHeart = favorite.querySelector('.bi-heart-fill');
+
+        favorite.addEventListener('click', () => {
+            emptyHeart.classList.toggle('d-none');
+            filledHeart.classList.toggle('d-none');
+        });
+    });
+
+</script>
