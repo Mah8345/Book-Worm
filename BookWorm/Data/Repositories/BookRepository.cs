@@ -22,7 +22,6 @@ namespace BookWorm.Data.Repositories
                     b.Authors,
                     AuthorPhotos = b.Authors.Select(a => a.Photo),
                     b.AssociatedGenres,
-                    GenrePhotos = b.AssociatedGenres.Select(g => g.Photo)
                 })
                 .FirstOrDefaultAsync();
             if (result == null) return null;
