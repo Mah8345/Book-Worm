@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BookWorm.Models
 {
@@ -8,7 +9,7 @@ namespace BookWorm.Models
         private string _title = title;
         public int Id { get; set; }
 
-        [MaxLength(150)] 
+        [MaxLength(40)] 
         public string Title
         {
             get => _title;
@@ -29,7 +30,7 @@ namespace BookWorm.Models
         public string? Summary { get; set; }
 
         public int? PagesNumber { get; set; }
-        public double AverageRating => Comments.Average(c => Convert.ToDouble(c.Rating));
+        public double AverageRating => Comments.IsNullOrEmpty() ? 0 : Comments.Average(c => Convert.ToDouble(c.Rating));
 
         public DateTime IntroducedAt { get; set; } = DateTime.Now;
 
