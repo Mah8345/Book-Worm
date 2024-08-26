@@ -1,0 +1,97 @@
+﻿@model Book
+@{
+    Layout = "_Layout";
+}
+<div class="book-details-container">
+    <div class="book-cover-info">
+        <div class="book-cover">
+            <img src="@Model.CoverPhoto?.FilePath" alt="@Model.Title">
+        </div>
+        <div class="book-info">
+            <h1 class="book-title">@Model.Title</h1>
+            <p class="book-introduction">@Model.Introduction</p>
+            <div class="book-summary-section">
+                <h2 class="summary-header">Summary</h2>
+                <p class="book-summary">@Model.Summary</p>
+            </div>
+            <p class="book-pages">
+                <span class="pages-label">Pages:</span> <span class="pages-number">@Model.PagesNumber</span>
+            </p>
+            <div class="book-rating">
+                <span>@Model.AverageRating</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFD700" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.73.518-1.69-.191-1.542-.926l.725-4.287L.173 6.765c-.52-.505-.233-1.426.504-1.527l4.332-.627L7.538.792c.329-.67 1.268-.67 1.597 0l2.029 4.819 4.332.627c.737.101 1.023 1.022.504 1.527l-3.617 3.465.725 4.287c.148.735-.812 1.444-1.542.926L8 13.187l-3.888 2.256z" />
+                </svg>
+            </div>
+            
+            <div class="publisher-info">
+                <div class="publisher-photo">
+                    <img src="@Model.Publisher?.PublisherLogo?.FilePath" alt="@Model.Publisher?.Name" class="publisher-photo-image">
+                </div>
+                <div class="publisher-name">
+                    <span>Published by:</span> @Model.Publisher?.Name
+                </div>
+            </div>
+            <div class="authors-info">
+                <h2 class="summary-header">Authors</h2>
+                <div class="authors-list">
+                    @foreach (var author in Model.Authors)
+                    {
+                        <div class="author-item">
+                            <img src="@author.Photo?.FilePath" alt="@author.Name" class="author-photo">
+                            <span class="author-name">@author.Name</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="book-genres">
+                <ul class="genre-list">
+                    @foreach (var genre in Model.AssociatedGenres)
+                    {
+                        <li class="genre">@genre.Name</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="additional-info">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="comments">Comments</button>
+            <button class="tab-button" data-tab="reviews">Reviews</button>
+            <button class="tab-button" data-tab="awards">Awards</button>
+            <button class="tab-button" data-tab="similar-books">Similar Books</button>
+        </div>
+        <div class="tab-content">
+            <div id="comments" class="tab-pane active">
+                <!-- Comments content here -->
+            </div>
+            <div id="reviews" class="tab-pane">
+                <!-- Reviews content here -->
+            </div>
+            <div id="awards" class="tab-pane">
+                <!-- Awards content here -->
+            </div>
+            <div id="similar-books" class="tab-pane">
+                <!-- Similar Books content here -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    });
+</script>

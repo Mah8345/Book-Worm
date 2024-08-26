@@ -343,6 +343,209 @@ nav {
     }
 
 
+.book-details-container {
+    padding: 20px;
+    background-color: #2A2A2A;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
+    color: #FFFFFF;
+}
 
+.book-cover-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.book-cover {
+    flex: 0 0 auto;
+    max-width: 200px; /* Adjust as needed */
+}
+
+    .book-cover img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+.book-info {
+    flex: 1;
+}
+
+.book-title {
+    font-size: 28px;
+    color: #FFD700;
+    margin-bottom: 10px;
+}
+
+.book-introduction {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.book-summary-section {
+    margin-top: 10px;
+}
+
+.summary-header {
+    font-size: 22px;
+    color: #FFD700;
+    margin-bottom: 5px;
+}
+
+.genre-section {
+    color: #FFD700;
+}
+
+.book-summary {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.book-pages {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.pages-label {
+    color: #FFD700; /* Gold color for the 'Pages' text */
+}
+
+.pages-number {
+    color: #FFFFFF; /* White color for the page number */
+}
+
+
+.book-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+    .book-rating span {
+        margin-right: 5px;
+    }
+
+.book-genres {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #333333; /* Slightly lighter background for contrast */
+    border-radius: 5px; /* Rounded corners */
+    border: 2px solid #FFD700; /* Gold border to match the theme */
+}
+
+.genre-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Flexbox for better layout */
+    flex-wrap: wrap; /* Allow genres to wrap if necessary */
+    gap: 10px; /* Space between genre items */
+}
+
+.genre {
+    background-color: #444444;
+    padding: 8px 12px; /* Adjusted padding */
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 16px; /* Increased font size for visibility */
+    color: #FFD700; /* Gold text color for genres */
+}
+
+
+.publisher-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.publisher-photo {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.publisher-photo-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.publisher-name {
+    font-size: 16px;
+}
+
+.authors-info {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.authors-list {
+    display: flex;
+    gap: 15px;
+}
+
+.author-item {
+    display: flex;
+    align-items: center;
+}
+
+.author-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.author-name {
+    font-size: 16px;
+}
+
+
+.additional-info {
+    margin-top: 30px;
+    background-color: #2A2A2A;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: #444444;
+    border: none;
+    color: #FFD700;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+    .tab-button.active, .tab-button:hover {
+        background-color: #FFD700;
+        color: #1A1A1A;
+    }
+
+.tab-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-pane {
+    display: none;
+}
+
+    .tab-pane.active {
+        display: block;
+    }
 
 
