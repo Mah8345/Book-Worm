@@ -1,10 +1,13 @@
-﻿namespace BookWorm.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BookWorm.Models
 {
+    [Table("Ratings")]
     public class Rating
     {
         public int Id { get; private set; }
         public int Score { get; set; }
-        public required ApplicationUser RatedBy { get; set; }
+        public virtual required ApplicationUser RatedBy { get; set; }
 
         public Rating(int score)
         {
