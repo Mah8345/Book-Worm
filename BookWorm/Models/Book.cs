@@ -30,9 +30,7 @@ namespace BookWorm.Models
         public string? Summary { get; set; }
 
         public int? PagesNumber { get; set; }
-        public string AverageRating => Ratings.IsNullOrEmpty() ? 
-            "Be the First to Rate" :
-            Ratings.Average(r => Convert.ToDouble(r.Score)).ToString("F1");
+        public double AverageRating => Ratings.IsNullOrEmpty() ? 0.0 : Ratings.Average(r => Convert.ToDouble(r.Score));
 
         public DateTime IntroducedAt { get; set; } = DateTime.Now;
 
