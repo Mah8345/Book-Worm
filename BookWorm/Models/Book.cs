@@ -30,7 +30,9 @@ namespace BookWorm.Models
         public string? Summary { get; set; }
 
         public int? PagesNumber { get; set; }
-        public double AverageRating => Comments.IsNullOrEmpty() ? 0 : Comments.Average(c => Convert.ToDouble(c.Rating));
+        public string AverageRating => Ratings.IsNullOrEmpty() ? 
+            "Be the First to Rate" :
+            Ratings.Average(r => Convert.ToDouble(r.Score)).ToString("F1");
 
         public DateTime IntroducedAt { get; set; } = DateTime.Now;
 
@@ -45,6 +47,8 @@ namespace BookWorm.Models
         public virtual ICollection<Award> Awards { get; set; } = [];
         public virtual ICollection<Review> Reviews { get; set; } = [];
         public virtual ICollection<Comment> Comments { get; set; } = [];
+
+        public virtual ICollection<Rating> Ratings { get; set; } = [];
 
         public virtual ICollection<ApplicationUser> FavoritedByUsers { get; set; } = [];
 

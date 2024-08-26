@@ -10,8 +10,6 @@ namespace BookWorm.Models
         [MaxLength(400)]
         public string? Body { get; set; }
 
-        public int Rating { get; set; }
-
         public DateTime CommentedAt { get; } = DateTime.Now;
 
         [ForeignKey("UserId")]
