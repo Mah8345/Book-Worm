@@ -11,9 +11,8 @@ namespace BookWorm.Models
         public DateTime UploadedOn { get; } = DateTime.Now;
         
 
-        //todo: remember to apply the same logic to add the uploaded files to the wwwroot/uploads/images folder
-        public string FilePath =>
-            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "images", Id.ToString());
+        //todo: remember to apply the same logic to add the uploaded files to the wwwroot/images folder
+        public string FilePath => Path.Combine("/images", Id.ToString());
     }
 }
 
