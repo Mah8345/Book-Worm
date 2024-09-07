@@ -12,12 +12,8 @@ namespace BookWorm.Models
         
 
         //todo: remember to apply the same logic to add the uploaded files to the wwwroot/images folder
-        public string FilePath { get; set; }
+        public string FilePath => Path.Combine("/images", Id.ToString());
 
-        public ApplicationImage()
-        {
-            FilePath = Path.Combine("/images",Id.ToString());
-        }
     }
 }
 
