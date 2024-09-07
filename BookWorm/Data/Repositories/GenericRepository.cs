@@ -1,4 +1,5 @@
-﻿using BookWorm.Exceptions;
+﻿using System.Linq.Expressions;
+using BookWorm.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookWorm.Data.Repositories
@@ -14,11 +15,23 @@ namespace BookWorm.Data.Repositories
             return await DbSet.ToListAsync();
         }
 
+        public async Task<IEnumerable<TEntity>> GetAllIncludeAsync<TProperty>(params Expression<Func<TEntity, TProperty>>[] navigationProperties)
+        {
+            var query = DbSet.AsQueryable();
+            foreach (var property in navigationProperties)
+            {
+                query.Include(property);
+            }
+
+            return await query.ToListAsync();
+        }
+
         public async Task<TEntity?> GetByIdAsync(object id)
         {
             return await DbSet.FindAsync(id);
         }
 
+        
         public async Task AddAsync(TEntity entity)
         {
             await DbSet.AddAsync(entity);
