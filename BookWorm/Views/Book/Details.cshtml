@@ -18,7 +18,17 @@
                 <span class="pages-label">Pages:</span> <span class="pages-number">@Model.PagesNumber</span>
             </p>
             <div class="book-rating">
-                <span>@Model.AverageRating</span>
+                @if (Model.AverageRating == 0)
+                {
+                    <!--todo:redirect to rating section of the page-->
+                    <a href="">
+                        <span>Be the First to Rate</span>
+                    </a>
+                }
+                else
+                {
+                    <span>@Model.AverageRating.ToString("F1") (@Model.Ratings.Count) Rates</span>
+                }
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFD700" class="bi bi-star-fill" viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.73.518-1.69-.191-1.542-.926l.725-4.287L.173 6.765c-.52-.505-.233-1.426.504-1.527l4.332-.627L7.538.792c.329-.67 1.268-.67 1.597 0l2.029 4.819 4.332.627c.737.101 1.023 1.022.504 1.527l-3.617 3.465.725 4.287c.148.735-.812 1.444-1.542.926L8 13.187l-3.888 2.256z" />
                 </svg>
@@ -26,7 +36,7 @@
             
             <div class="publisher-info">
                 <div class="publisher-photo">
-                    <img src="@Model.Publisher?.PublisherLogo?.FilePath" alt="@Model.Publisher?.Name" class="publisher-photo-image">
+                    <img src="@(Model.Publisher?.PublisherLogo?.FilePath ?? "/images/PublisherDefault.jpeg")" alt="@Model.Publisher?.Name" class="publisher-photo-image">
                 </div>
                 <div class="publisher-name">
                     <span>Published by:</span> @Model.Publisher?.Name
@@ -38,7 +48,7 @@
                     @foreach (var author in Model.Authors)
                     {
                         <div class="author-item">
-                            <img src="@author.Photo?.FilePath" alt="@author.Name" class="author-photo">
+                            <img src="@(author.Photo?.FilePath ?? "/images/AuthorDefault.jpeg")" alt="@author.Name" class="author-photo">
                             <span class="author-name">@author.Name</span>
                         </div>
                     }
