@@ -139,16 +139,6 @@ namespace BookWorm.Data
                     r => r.HasOne<Genre>().WithMany().HasForeignKey("GenreId"),
                     l => l.HasOne<Book>().WithMany().HasForeignKey("BookId")
                 );
-
-            builder.Entity<Book>()
-                .HasMany<Book>(b => b.SimilarBooks)
-                .WithMany()
-                .UsingEntity<Dictionary<string, object>>
-                    (
-                        "SimilarBooks",
-                        r => r.HasOne<Book>().WithMany().HasForeignKey("SimilarBookId"),
-                        l=>l.HasOne<Book>().WithMany().HasForeignKey("BookId")
-                    );
         }
 
         private void ConfigureAuthor(ModelBuilder builder)

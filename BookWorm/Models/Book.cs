@@ -51,6 +51,7 @@ namespace BookWorm.Models
         public virtual ICollection<ApplicationUser> FavoritedByUsers { get; set; } = [];
 
         //self referencing relationships
+        [NotMapped]
         public virtual ICollection<Book> SimilarBooks { get; set; } = [];
     }
 }
