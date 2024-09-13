@@ -8,6 +8,8 @@ namespace BookWorm.Controllers
 {
     public class AuthorController : Controller
     {
+        private const string NotFoundMessage = "The Page You Were Looking for Was Not Found!";
+        private const string UnexpectedErrorMessage = "Something Unexpected Has Happened!";
         private readonly IUnitOfWork _unitOfWork;
 
 
@@ -23,13 +25,13 @@ namespace BookWorm.Controllers
             try
             {
                 var author = await _unitOfWork.AuthorRepository.GetAuthorWithPhotoAsync(authorId);
-                //todo:return related not found error page or whatever and log details
-                return author != null ? View(author) : View("Error");
+                //TODO:log details
+                return author != null ? View(author) : View("Error",new ErrorViewModel(NotFoundMessage));
             }
             catch (Exception e)
-            {
+            {  
                 //unexpected error
-                return View("Error");
+                return View("Error",new ErrorViewModel(UnexpectedErrorMessage));
             }
         }
 
