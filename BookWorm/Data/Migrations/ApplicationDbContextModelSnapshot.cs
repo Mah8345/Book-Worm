@@ -37,7 +37,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("AuthorBooks");
+                    b.ToTable("AuthorBooks", (string)null);
                 });
 
             modelBuilder.Entity("AwardBooks", b =>
@@ -52,7 +52,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("AwardBooks");
+                    b.ToTable("AwardBooks", (string)null);
                 });
 
             modelBuilder.Entity("BookWorm.Models.ApplicationImage", b =>
@@ -74,7 +74,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ApplicationImages");
+                    b.ToTable("ApplicationImages", (string)null);
                 });
 
             modelBuilder.Entity("BookWorm.Models.ApplicationUser", b =>
@@ -196,7 +196,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("NormalizedName");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Authors", (string)null);
                 });
 
             modelBuilder.Entity("BookWorm.Models.Award", b =>
@@ -223,7 +223,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("ImageId");
 
-                    b.ToTable("Awards");
+                    b.ToTable("Awards", (string)null);
                 });
 
             modelBuilder.Entity("BookWorm.Models.Book", b =>
@@ -274,7 +274,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("BookWorm.Models.Comment", b =>
@@ -305,7 +305,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("BookWorm.Models.Genre", b =>
@@ -340,7 +340,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("NormalizedName");
 
-                    b.ToTable("Genres");
+                    b.ToTable("Genres", (string)null);
                 });
 
             modelBuilder.Entity("BookWorm.Models.Publisher", b =>
@@ -375,7 +375,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("NormalizedName");
 
-                    b.ToTable("Publishers");
+                    b.ToTable("Publishers", (string)null);
                 });
 
             modelBuilder.Entity("BookWorm.Models.Rating", b =>
@@ -402,7 +402,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("RatedById");
 
-                    b.ToTable("Ratings");
+                    b.ToTable("Ratings", (string)null);
                 });
 
             modelBuilder.Entity("BookWorm.Models.Review", b =>
@@ -435,7 +435,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("FavoriteAuthors", b =>
@@ -450,7 +450,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("FavoriteAuthors");
+                    b.ToTable("FavoriteAuthors", (string)null);
                 });
 
             modelBuilder.Entity("FavoriteBooks", b =>
@@ -465,7 +465,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("FavoriteBooks");
+                    b.ToTable("FavoriteBooks", (string)null);
                 });
 
             modelBuilder.Entity("FavoriteGenres", b =>
@@ -480,7 +480,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("FavoriteGenres");
+                    b.ToTable("FavoriteGenres", (string)null);
                 });
 
             modelBuilder.Entity("GenreBooks", b =>
@@ -495,7 +495,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("GenreBooks");
+                    b.ToTable("GenreBooks", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -643,7 +643,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ReadBooks");
+                    b.ToTable("ReadBooks", (string)null);
                 });
 
             modelBuilder.Entity("WantToReadBooks", b =>
@@ -658,7 +658,7 @@ namespace BookWorm.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("WantToReadBooks");
+                    b.ToTable("WantToReadBooks", (string)null);
                 });
 
             modelBuilder.Entity("AuthorBooks", b =>

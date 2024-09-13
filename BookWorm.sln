@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWorm", "BookWorm\BookWorm.csproj", "{4786DA81-90C9-4CF3-A757-E6827E963987}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWorm.Tests", "BookWorm.Tests\BookWorm.Tests.csproj", "{C955911B-3CFB-407B-A347-EE08FE182D1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookWorm.Tests", "BookWorm.Tests\BookWorm.Tests.csproj", "{C955911B-3CFB-407B-A347-EE08FE182D1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
