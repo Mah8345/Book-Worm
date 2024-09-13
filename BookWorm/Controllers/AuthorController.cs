@@ -56,7 +56,6 @@ namespace BookWorm.Controllers
                 };
                 if (author.Photo != null)
                 {
-                    Console.WriteLine(author.Photo.FilePath);
                     await FileManager.SavePhotoAsync(author.Photo.Id, authorDto.PhotoFile!);
                 }
                 await _unitOfWork.AuthorRepository.AddAsync(author);
