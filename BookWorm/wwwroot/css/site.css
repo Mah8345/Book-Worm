@@ -549,3 +549,119 @@ nav {
     }
 
 
+/* Form Styling */
+.create-author-container {
+    padding: 40px;
+    background-color: #2A2A2A;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    margin: 40px auto;
+    color: #FFFFFF;
+}
+
+    .create-author-container h2 {
+        text-align: center;
+        color: #FFD700;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+
+.create-author-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label {
+    font-size: 18px;
+    color: #FFD700;
+}
+
+input[type="text"], textarea, input[type="file"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+    input[type="text"]::placeholder, textarea::placeholder {
+        color: #CCCCCC;
+    }
+
+input[type="file"] {
+    padding: 10px;
+    background-color: #444444;
+    cursor: pointer;
+}
+
+.create-author-form .btn {
+    background-color: #FFD700;
+    color: #1A1A1A;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+    .create-author-form .btn:hover {
+        background-color: #FFC300;
+    }
+
+
+.author-details {
+    display: flex;
+    align-items: flex-start;
+    margin: 20px 0;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    background-color: #2A2A2A;
+    border-radius: 10px;
+}
+
+.author-image {
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+    .author-image img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid gold;
+    }
+
+.author-info {
+    max-width: 600px;
+}
+
+.author-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: gold;
+}
+
+.author-about {
+    font-size: 16px;
+    line-height: 1.6;
+    color: white;
+}
+
+.author-books {
+    color: gold;
+    font-size:16px;
+    text-decoration-color:inherit;
+    text-align:center
+}
