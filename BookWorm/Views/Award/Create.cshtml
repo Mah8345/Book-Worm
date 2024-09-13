@@ -1,0 +1,29 @@
+﻿@model AwardDTO
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<section class="create-author-container">
+    <h2>Add New Award</h2>
+    <form asp-action="Create" method="POST" enctype="multipart/form-data" class="create-author-form">
+        <div class="form-group">
+            <label asp-for="Name">Award Name</label>
+            <input type="text" id="authorName" name="Name" required>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="About">About the Award</label>
+            <textarea id="authorAbout" name="About" rows="5" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhotoFile">Upload Award Photo</label>
+            <input asp-for="PhotoFile" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn">Add Award</button>
+        </div>
+    </form>
+</section>
