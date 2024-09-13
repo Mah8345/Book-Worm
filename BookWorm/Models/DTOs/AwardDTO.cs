@@ -2,7 +2,7 @@
 
 namespace BookWorm.Models.DTOs
 {
-    public class AwardDTO
+    public class AwardDto
     {
         [MaxLength(50)]
         public required string Name { get; set; }

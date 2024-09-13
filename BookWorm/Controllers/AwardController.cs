@@ -43,7 +43,7 @@ namespace BookWorm.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm] AwardDTO awardDto)
+        public async Task<IActionResult> Create([FromForm] AwardDto awardDto)
         {
             try
             {
