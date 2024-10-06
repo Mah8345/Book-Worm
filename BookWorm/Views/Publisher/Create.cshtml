@@ -1,0 +1,29 @@
+﻿@model PublisherDto
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<section class="create-author-container">
+    <h2>Add New Publisher</h2>
+    <form asp-action="Create" method="POST" enctype="multipart/form-data" class="create-author-form">
+        <div class="form-group">
+            <label asp-for="Name">Publisher Name</label>
+            <input asp-for="Name">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="About">About the Publisher</label>
+            <textarea id="About" name="About"  rows="5" asp-for="About"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhotoFile">Upload Publisher Logo</label>
+            <input asp-for="PhotoFile" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn">Add Publisher</button>
+        </div>
+    </form>
+</section>

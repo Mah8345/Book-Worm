@@ -1,0 +1,20 @@
+﻿@model Publisher
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="author-details">
+    <div class="author-image">
+        <img src="@(Model.PublisherLogo?.FilePath ?? "/images/PublisherDefault.jpeg")" alt="Publisher Name">
+    </div>
+    <div class="author-info">
+        <h2 class="author-name">@Model.Name</h2>
+        <p class="author-about">
+            @Model.About
+        </p>
+    </div>
+</div>
+<div class="author-books">
+    <h4>Books Publisher by This Publisher</h4>
+    <partial name="_BookCardListPartial" model="Model.PublishedBooks" />
+</div>
